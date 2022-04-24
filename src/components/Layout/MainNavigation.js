@@ -9,6 +9,10 @@ const MainNavigation = () => {
 
   const isLoggedIn = authCtx.isLoggedIn;
 
+  const logoutHandler = () => {
+    authCtx.logout();
+  };
+
   return (
     <header className={classes.header}>
       <Link to="/">
@@ -16,7 +20,7 @@ const MainNavigation = () => {
       </Link>
       <nav>
         <ul>
-          {!isLoggedIn && (
+          {!isLoggedIn && ( // This is how to show content conditionally when a user is logged in or out.
             <li>
               <Link to="/auth">Login</Link>
             </li>
@@ -28,7 +32,7 @@ const MainNavigation = () => {
           )}
           {isLoggedIn && (
             <li>
-              <button>Logout</button>
+              <button onClick={logoutHandler}>Logout</button>
             </li>
           )}
         </ul>
